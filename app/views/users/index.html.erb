@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<h1>Members</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Telephone</th>
       <th>Email</th>
       <th>Address</th>
       <th>Password</th>
@@ -18,6 +19,7 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
+        <td><%= user.telephone %></td>
         <td><%= user.email %></td>
         <td><%= user.address %></td>
         <td><%= user.password %></td>
