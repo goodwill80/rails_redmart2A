@@ -7,7 +7,8 @@
        <li><%= link_to "About", about_path %></li>
        <li><%= link_to "Contact Us", contact_us_path %></li>
        <li><%= link_to "Start Shopping", 'https://redmart.com/sales' %></li>
-       <li><%= link_to "Sign up as Member", users_path %></li>
+       <li><%= link_to "Sign up as Member", signup_path %></li>
+
         <% if logged_in? %>
           <li><%= link_to "Users", current_user %></li>
           <li class="dropdown">

@@ -1,6 +1,13 @@
 class UsersController < ApplicationController
+  #setting default users
+  before_action :set_user,      only:   [:show, :edit, :update, :destroy]
+  #check if alredy logged in
+  before_action :require_login, only:   [:edit, :update, :destroy]
+  #check if correct user
+  before_action :correct_user,  except: [:index, :new, :show, :create ]
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_logout,  only: [:new]
+
 
   # GET /users
   # GET /users.json
@@ -11,7 +18,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find( params[:id] )
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -51,7 +58,7 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
-  end
+end
 
   # DELETE /users/1
   # DELETE /users/1.json
@@ -66,11 +73,36 @@ class UsersController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def permitted_user_params
-      params.require(:user).permit(:name, :address, :telephone, :cc_number, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def require_login
+      #check if the user is logged in or not
+      unless logged_in?
+        flash[:danger] = "Please log in first!"
+        redirect_to root_url # halts request cycle
+      end
+    end
+
+    # Confirms the correct user.
+    def correct_user
+      @user = User.find(params[:id])
+
+      unless current_user?(@user)
+        flash[:warning] = "You are not the actual user"
+        redirect_to root_url
+      end
+    end
+
+    def require_logout
+      if logged_in?
+        flash[:warning] = "You must logged out to create a new user"
+        redirect_to(root_url)
+      end
     end
 end

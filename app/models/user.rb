@@ -16,4 +16,16 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
  # FOR HASHING PASSWORD
  has_secure_password
+
+ def User.digest(string)
+     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                   BCrypt::Engine.cost
+     BCrypt::Password.create(string, cost: cost)
+   end
+
+   # Returns a random token.
+   def User.new_token
+     SecureRandom.urlsafe_base64
+   end
+
 end
