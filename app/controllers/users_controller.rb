@@ -8,7 +8,6 @@ class UsersController < ApplicationController
 
   before_action :require_logout,  only: [:new]
 
-
   # GET /users
   # GET /users.json
   def index
