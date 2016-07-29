@@ -31,4 +31,8 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
      SecureRandom.urlsafe_base64
    end
 
+   def feed
+    Micropost.where("user_id = ?", id)
+  end
+
 end
