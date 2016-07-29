@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+
+has_many :microposts, dependent: :destroy
 before_save { email.downcase! }
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -16,6 +18,7 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
  # FOR HASHING PASSWORD
  has_secure_password
+ validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
  def User.digest(string)
      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

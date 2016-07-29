@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-
+  get '/users',  to: 'users#index'
   get '/signup',  to: 'users#new'
-  post '/users',  to: 'users#create'
+  post '/signup',  to: 'users#create'
 
   resources :users
+  resources :microposts,          only: [:create, :destroy]
 
   get  '/home',   to: 'static_pages#home'
   get  '/about',   to: 'static_pages#about'
@@ -17,10 +18,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :categories_products
-  resources :reviews
-  resources :categories
-  resources :products
 
 
 
