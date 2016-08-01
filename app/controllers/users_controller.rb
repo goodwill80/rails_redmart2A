@@ -93,8 +93,8 @@ end
 
     def require_logout
       if logged_in?
-        flash[:warning] = "You must logged out to create a new user"
-        redirect_to(root_url)
+        flash.now[:warning] = "You must logged out to create a new user"
+        redirect_to 'profile_path'
       end
     end
 end

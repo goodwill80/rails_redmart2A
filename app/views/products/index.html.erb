@@ -1,0 +1,81 @@
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>Product ID</th>
+    <th>Image</th>
+    <th>Product Name</th>
+    <th>Price(SGD)</th>
+    <th>Buy</th>
+    <th>Review</th>
+  </tr>
+</thead>
+
+
+<tbody>
+  <% @products.each do |product| %>
+
+  <tr>
+    <td>
+      <%= product[:id]%>
+    </td>
+
+    <td>
+      <%= product[:picture] %>
+    </td>
+
+    <td>
+      <%= product[:name] %>
+    </td>
+
+    <td>
+      <%= product[:price] %>
+    </td>
+
+    <td>
+    <button type="button">Buy now</button>
+    </td>
+
+    <td>
+    <button type="button">Review Me</button>
+    </td>
+
+  </tr>
+  <% end %>
+</tbody>
+</table>
+<!-- <table border ="1">
+
+<tr>
+
+<td>
+
+<img src="picture1.jpg" width="60" height="60"/>
+
+</td>
+
+<td>This is a description of the first item.</td>
+
+<td>This item is currently available.</td>
+
+</tr>
+
+Insert the second row of cells and their contents with this code:
+
+<tr>
+
+<td>
+
+<img src="picture2.jpg" width="60" height="60"/>
+
+</td>
+
+<td>This is a description of the second item.</td>
+
+<td>This item is on backorder.</td>
+
+</tr>
+
+Close the table with the ending tag:
+
+</table> -->

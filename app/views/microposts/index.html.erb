@@ -1,0 +1,33 @@
+<% provide(:title, 'Our reviews') %>
+<h1>Reviews on Redmart</h1>
+
+<table class="table table-striped">
+
+  <thead>
+    <tr>
+      <th>Review</th>
+      <th>Posted by:</th>
+      <th>Dated Posted</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @microposts.each do |post| %>
+
+    <tr>
+      <td>
+        <%= post[:content] %>
+      </td>
+
+      <td>
+        <%= post[:user_id] %>
+      </td>
+
+      <td>
+        <%= post[:created_at] %>
+      </td>
+
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -6,9 +6,9 @@
         <li><%= link_to "Home", root_path %></li>
        <li><%= link_to "About", about_path %></li>
        <li><%= link_to "Contact Us", contact_us_path %></li>
-       <li><%= link_to "Start Shopping", 'https://redmart.com/sales' %></li>
+       <li><%= link_to "Products", products_path %></li>
        <li><%= link_to "Sign up as Member", signup_path  %></li>
-       <li><%= link_to "Members List", users_path %></li>
+       <li><%= link_to "Reviews", reviews_path %></li>
 
         <% if logged_in? %>
           <li><%= link_to "Your profile", current_user %></li>
